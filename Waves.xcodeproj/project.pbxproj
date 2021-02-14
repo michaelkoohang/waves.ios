@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C28A1A725D88F77007922C6 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C28A1A625D88F77007922C6 /* SpotifyiOS.framework */; };
+		4C28A1B125D8950F007922C6 /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28A1B025D8950F007922C6 /* SpotifyManager.swift */; };
 		4C5BEC4225D8675000D258C6 /* WavesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4125D8675000D258C6 /* WavesApp.swift */; };
-		4C5BEC4425D8675000D258C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4325D8675000D258C6 /* ContentView.swift */; };
+		4C5BEC4425D8675000D258C6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4325D8675000D258C6 /* MainView.swift */; };
 		4C5BEC4625D8675100D258C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4525D8675100D258C6 /* Assets.xcassets */; };
 		4C5BEC4925D8675100D258C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4825D8675100D258C6 /* Preview Assets.xcassets */; };
 		4C5BEC4B25D8675100D258C6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4A25D8675100D258C6 /* Persistence.swift */; };
@@ -16,9 +18,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C28A1A625D88F77007922C6 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		4C28A1AA25D89244007922C6 /* Waves-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Waves-Bridging-Header.h"; sourceTree = "<group>"; };
+		4C28A1B025D8950F007922C6 /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
 		4C5BEC3E25D8675000D258C6 /* Waves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waves.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5BEC4125D8675000D258C6 /* WavesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavesApp.swift; sourceTree = "<group>"; };
-		4C5BEC4325D8675000D258C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4C5BEC4325D8675000D258C6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4C5BEC4525D8675100D258C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C5BEC4825D8675100D258C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C5BEC4A25D8675100D258C6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -31,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C28A1A725D88F77007922C6 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +46,7 @@
 		4C5BEC3525D8675000D258C6 = {
 			isa = PBXGroup;
 			children = (
+				4C28A1AA25D89244007922C6 /* Waves-Bridging-Header.h */,
 				4C5BEC4025D8675000D258C6 /* Waves */,
 				4C5BEC3F25D8675000D258C6 /* Products */,
 			);
@@ -57,11 +64,13 @@
 			isa = PBXGroup;
 			children = (
 				4C5BEC4125D8675000D258C6 /* WavesApp.swift */,
-				4C5BEC4325D8675000D258C6 /* ContentView.swift */,
+				4C5BEC4325D8675000D258C6 /* MainView.swift */,
+				4C28A1B025D8950F007922C6 /* SpotifyManager.swift */,
 				4C5BEC4525D8675100D258C6 /* Assets.xcassets */,
 				4C5BEC4A25D8675100D258C6 /* Persistence.swift */,
 				4C5BEC4F25D8675100D258C6 /* Info.plist */,
 				4C5BEC4C25D8675100D258C6 /* Waves.xcdatamodeld */,
+				4C28A1A625D88F77007922C6 /* SpotifyiOS.framework */,
 				4C5BEC4725D8675100D258C6 /* Preview Content */,
 			);
 			path = Waves;
@@ -144,9 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C28A1B125D8950F007922C6 /* SpotifyManager.swift in Sources */,
 				4C5BEC4E25D8675100D258C6 /* Waves.xcdatamodeld in Sources */,
 				4C5BEC4B25D8675100D258C6 /* Persistence.swift in Sources */,
-				4C5BEC4425D8675000D258C6 /* ContentView.swift in Sources */,
+				4C5BEC4425D8675000D258C6 /* MainView.swift in Sources */,
 				4C5BEC4225D8675000D258C6 /* WavesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,14 +289,20 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Waves/Preview Content\"";
 				DEVELOPMENT_TEAM = HW2DL7UPC8;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Waves",
+				);
 				INFOPLIST_FILE = Waves/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MichaelKoohang.Waves;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Waves-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,14 +317,20 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Waves/Preview Content\"";
 				DEVELOPMENT_TEAM = HW2DL7UPC8;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Waves",
+				);
 				INFOPLIST_FILE = Waves/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MichaelKoohang.Waves;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Waves-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
