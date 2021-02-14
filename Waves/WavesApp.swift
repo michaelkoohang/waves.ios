@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct WavesApp: App {
-    let persistenceController = PersistenceController.shared
-
+    @Environment(\.scenePhase) private var scenePhase
+    let sptManager = SpotifyManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            MainView(sptManger: sptManager)
+                .onOpenURL { (url) in
+                    sptManager.login(url: url)
+                }
         }
     }
 }
