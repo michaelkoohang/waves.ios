@@ -1,9 +1,3 @@
-//
-//  WavesApp.swift
-//  Waves
-//
-//  Created by Michael Koohang on 2/13/21.
-//
 
 import SwiftUI
 
