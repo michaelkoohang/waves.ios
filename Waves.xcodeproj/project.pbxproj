@@ -15,6 +15,7 @@
 		4C5BEC4925D8675100D258C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4825D8675100D258C6 /* Preview Assets.xcassets */; };
 		4C5BEC4B25D8675100D258C6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4A25D8675100D258C6 /* Persistence.swift */; };
 		4C5BEC4E25D8675100D258C6 /* Waves.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4C25D8675100D258C6 /* Waves.xcdatamodeld */; };
+		4C88267F25EBFC9E00C88518 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */; };
 		4CCA024325EB0DE900F676DA /* WavesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA024225EB0DE900F676DA /* WavesButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		4C5BEC4A25D8675100D258C6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4C5BEC4D25D8675100D258C6 /* Waves.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Waves.xcdatamodel; sourceTree = "<group>"; };
 		4C5BEC4F25D8675100D258C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		4CCA024225EB0DE900F676DA /* WavesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavesButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,13 +70,14 @@
 				4C5BEC4125D8675000D258C6 /* WavesApp.swift */,
 				4C5BEC4325D8675000D258C6 /* MainView.swift */,
 				4C28A1B025D8950F007922C6 /* SpotifyManager.swift */,
+				4CCA024225EB0DE900F676DA /* WavesButton.swift */,
+				4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */,
 				4C5BEC4525D8675100D258C6 /* Assets.xcassets */,
 				4C5BEC4A25D8675100D258C6 /* Persistence.swift */,
 				4C5BEC4F25D8675100D258C6 /* Info.plist */,
 				4C5BEC4C25D8675100D258C6 /* Waves.xcdatamodeld */,
 				4C28A1A625D88F77007922C6 /* SpotifyiOS.framework */,
 				4C5BEC4725D8675100D258C6 /* Preview Content */,
-				4CCA024225EB0DE900F676DA /* WavesButton.swift */,
 			);
 			path = Waves;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				4C28A1B125D8950F007922C6 /* SpotifyManager.swift in Sources */,
 				4C5BEC4E25D8675100D258C6 /* Waves.xcdatamodeld in Sources */,
 				4CCA024325EB0DE900F676DA /* WavesButton.swift in Sources */,
+				4C88267F25EBFC9E00C88518 /* UserDefaultsManager.swift in Sources */,
 				4C5BEC4B25D8675100D258C6 /* Persistence.swift in Sources */,
 				4C5BEC4425D8675000D258C6 /* MainView.swift in Sources */,
 				4C5BEC4225D8675000D258C6 /* WavesApp.swift in Sources */,
