@@ -8,7 +8,7 @@ struct MainView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image("Hand")
+            Image("doodle-1")
                 .resizable()
                 .frame(width: 100, height: 100)
             Spacer()

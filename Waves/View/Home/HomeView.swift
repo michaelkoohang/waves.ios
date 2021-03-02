@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var searchString: String = ""
-    @State var friends: [String] = ["Logan", "Michael", "Tris", "Jack", "Max", "Isabel", "Jared", "Dylan"]
+    @State var friends: [String] = ["Logan", "Michael", "Tris", "Jack", "Max", "Isabel", "Jared", "Dylan"].sorted()
     @State var filteredFriends: [String] = []
     var columns: [GridItem] = [
         GridItem(.flexible()),
@@ -34,29 +34,30 @@ struct HomeView: View {
         })
         
         return NavigationView {
-            VStack(alignment: .center) {
+            ScrollView {
                 TextField("Search", text: binding)
                     .padding(EdgeInsets(top: 12, leading: 18, bottom: 12, trailing: 12))
                     .background(Color(UIColor.systemGray6))
                     .cornerRadius(12)
-                ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(filteredFriends, id: \.self) { name in
-                            NavigationLink(destination: RadarView()) {
-                                UserView(image: RandomImageManager.getImage(), name: name)
-                                    .padding()
-                            }
+                LazyVGrid(columns: columns) {
+                    ForEach(filteredFriends, id: \.self) { name in
+                        NavigationLink(destination: RadarView()) {
+                            UserView(image: RandomImageManager.getImage(), name: name)
+                                .padding()
                         }
                     }
-                    .padding(EdgeInsets(top: 24, leading: 24, bottom: 0, trailing: 24))
-                    .animation(.default)
                 }
-                Spacer()
+                .padding(EdgeInsets(top: 24, leading: 24, bottom: 0, trailing: 24))
+                .animation(.default)
             }
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             .navigationBarHidden(true)
-        }.onAppear() {
+            .navigationBarBackButtonHidden(true)
+        }
+        .statusBar(hidden: true)
+        .onAppear() {
             filteredFriends = friends
+            UITextField.appearance().clearButtonMode = .whileEditing
         }
         
     }
