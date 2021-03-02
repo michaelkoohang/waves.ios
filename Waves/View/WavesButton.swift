@@ -20,7 +20,7 @@ struct WavesButton: View {
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: .continuous)
-                    .fill(Color.white)
+                    .fill(Color(UIColor.systemGray6))
             )
         })
     }
