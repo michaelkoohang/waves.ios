@@ -43,7 +43,7 @@ struct HomeView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(filteredFriends, id: \.self) { name in
                             NavigationLink(destination: RadarView()) {
-                                UserView(image: "Hand", name: name)
+                                UserView(image: RandomImageManager.getImage(), name: name)
                                     .padding()
                             }
                         }

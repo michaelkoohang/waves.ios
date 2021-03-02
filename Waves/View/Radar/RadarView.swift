@@ -12,7 +12,7 @@ struct RadarView: View {
     
     var body: some View {
         VStack {
-            UserView(image: "Hand", name: "Logan", imageWidth: 125, imageHeight: 125)
+            UserView(image: RandomImageManager.getImage(), name: "Logan", imageWidth: 125, imageHeight: 125)
             VStack(alignment: .leading) {
                 ForEach(songs, id: \.self) { name in
                     WavesButton(text: name, color: .green) {

@@ -19,6 +19,7 @@
 		4C88267F25EBFC9E00C88518 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */; };
 		4C88268925EC7D4E00C88518 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88268825EC7D4E00C88518 /* HomeView.swift */; };
 		4CC7816F25EDA56D00420803 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7816E25EDA56D00420803 /* UserView.swift */; };
+		4CC7817425EDC4A900420803 /* RandomImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7817325EDC4A900420803 /* RandomImageManager.swift */; };
 		4CCA024325EB0DE900F676DA /* WavesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA024225EB0DE900F676DA /* WavesButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		4C88268825EC7D4E00C88518 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4CC7816E25EDA56D00420803 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		4CC7817325EDC4A900420803 /* RandomImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageManager.swift; sourceTree = "<group>"; };
 		4CCA024225EB0DE900F676DA /* WavesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavesButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 			children = (
 				4C28A1B025D8950F007922C6 /* SpotifyManager.swift */,
 				4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */,
+				4CC7817325EDC4A900420803 /* RandomImageManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				4C5BEC4E25D8675100D258C6 /* Waves.xcdatamodeld in Sources */,
 				4CCA024325EB0DE900F676DA /* WavesButton.swift in Sources */,
 				4C88267F25EBFC9E00C88518 /* UserDefaultsManager.swift in Sources */,
+				4CC7817425EDC4A900420803 /* RandomImageManager.swift in Sources */,
 				4C7D948225EC891D00E3AF77 /* RadarView.swift in Sources */,
 				4C5BEC4B25D8675100D258C6 /* Persistence.swift in Sources */,
 				4C88268925EC7D4E00C88518 /* HomeView.swift in Sources */,
