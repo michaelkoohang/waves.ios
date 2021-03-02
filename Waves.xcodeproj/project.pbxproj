@@ -15,7 +15,10 @@
 		4C5BEC4925D8675100D258C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4825D8675100D258C6 /* Preview Assets.xcassets */; };
 		4C5BEC4B25D8675100D258C6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4A25D8675100D258C6 /* Persistence.swift */; };
 		4C5BEC4E25D8675100D258C6 /* Waves.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BEC4C25D8675100D258C6 /* Waves.xcdatamodeld */; };
+		4C7D948225EC891D00E3AF77 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D948125EC891D00E3AF77 /* RadarView.swift */; };
 		4C88267F25EBFC9E00C88518 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */; };
+		4C88268925EC7D4E00C88518 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88268825EC7D4E00C88518 /* HomeView.swift */; };
+		4CC7816F25EDA56D00420803 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7816E25EDA56D00420803 /* UserView.swift */; };
 		4CCA024325EB0DE900F676DA /* WavesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCA024225EB0DE900F676DA /* WavesButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +34,10 @@
 		4C5BEC4A25D8675100D258C6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4C5BEC4D25D8675100D258C6 /* Waves.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Waves.xcdatamodel; sourceTree = "<group>"; };
 		4C5BEC4F25D8675100D258C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C7D948125EC891D00E3AF77 /* RadarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
 		4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		4C88268825EC7D4E00C88518 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4CC7816E25EDA56D00420803 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		4CCA024225EB0DE900F676DA /* WavesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WavesButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,11 +73,9 @@
 		4C5BEC4025D8675000D258C6 /* Waves */ = {
 			isa = PBXGroup;
 			children = (
+				4C88268625EC7C7900C88518 /* Utils */,
+				4C88268525EC7C7100C88518 /* View */,
 				4C5BEC4125D8675000D258C6 /* WavesApp.swift */,
-				4C5BEC4325D8675000D258C6 /* MainView.swift */,
-				4C28A1B025D8950F007922C6 /* SpotifyManager.swift */,
-				4CCA024225EB0DE900F676DA /* WavesButton.swift */,
-				4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */,
 				4C5BEC4525D8675100D258C6 /* Assets.xcassets */,
 				4C5BEC4A25D8675100D258C6 /* Persistence.swift */,
 				4C5BEC4F25D8675100D258C6 /* Info.plist */,
@@ -88,6 +92,43 @@
 				4C5BEC4825D8675100D258C6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4C88268225EC7BE300C88518 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4C88268825EC7D4E00C88518 /* HomeView.swift */,
+				4CC7816E25EDA56D00420803 /* UserView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4C88268325EC7C4800C88518 /* Radar */ = {
+			isa = PBXGroup;
+			children = (
+				4C7D948125EC891D00E3AF77 /* RadarView.swift */,
+			);
+			path = Radar;
+			sourceTree = "<group>";
+		};
+		4C88268525EC7C7100C88518 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C88268225EC7BE300C88518 /* Home */,
+				4C88268325EC7C4800C88518 /* Radar */,
+				4C5BEC4325D8675000D258C6 /* MainView.swift */,
+				4CCA024225EB0DE900F676DA /* WavesButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C88268625EC7C7900C88518 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4C28A1B025D8950F007922C6 /* SpotifyManager.swift */,
+				4C88267E25EBFC9E00C88518 /* UserDefaultsManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +204,10 @@
 				4C5BEC4E25D8675100D258C6 /* Waves.xcdatamodeld in Sources */,
 				4CCA024325EB0DE900F676DA /* WavesButton.swift in Sources */,
 				4C88267F25EBFC9E00C88518 /* UserDefaultsManager.swift in Sources */,
+				4C7D948225EC891D00E3AF77 /* RadarView.swift in Sources */,
 				4C5BEC4B25D8675100D258C6 /* Persistence.swift in Sources */,
+				4C88268925EC7D4E00C88518 /* HomeView.swift in Sources */,
+				4CC7816F25EDA56D00420803 /* UserView.swift in Sources */,
 				4C5BEC4425D8675000D258C6 /* MainView.swift in Sources */,
 				4C5BEC4225D8675000D258C6 /* WavesApp.swift in Sources */,
 			);

@@ -6,7 +6,6 @@ struct MainView: View {
     var sptManger: SpotifyManager
 
     var body: some View {
-        
         VStack {
             Spacer()
             Image("Hand")
@@ -23,8 +22,6 @@ struct MainView: View {
             Spacer()
         }
         .padding()
-        
-        
     }
 }
 

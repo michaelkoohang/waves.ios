@@ -8,10 +8,11 @@ struct WavesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView(sptManger: sptManager)
-                .onOpenURL { (url) in
-                    sptManager.login(url: url)
-                }
+//            MainView(sptManger: sptManager)
+//                .onOpenURL { (url) in
+//                    sptManager.login(url: url)
+//                }
+            HomeView()
         }
     }
 }

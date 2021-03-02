@@ -12,5 +12,4 @@ struct UserDefaultsManager {
     static func getLoggedIn() -> Bool {
         return defaults.bool(forKey: LOGIN_KEY)
     }
-    
 }
