@@ -1,17 +1,25 @@
 
 import Foundation
 
-class SpotifyManager: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
-    
+class SpotifyManager: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
+    let ApiURL = "https://016e7c736b18.ngrok.io"
     let SpotifyClientID = "a9a2854c43bc43ddb98f2bedf627bc50"
     let SpotifyRedirectURL = URL(string: "waves://spotify-login-callback")!
     var accessToken = ""
     var playURI = ""
 
-    lazy var configuration = SPTConfiguration(
-      clientID: SpotifyClientID,
-      redirectURL: SpotifyRedirectURL
-    )
+    lazy var configuration: SPTConfiguration = {
+        let configuration = SPTConfiguration(clientID: SpotifyClientID, redirectURL: SpotifyRedirectURL)
+        configuration.playURI = ""
+        configuration.tokenSwapURL = URL(string: "\(ApiURL)/api/token")
+        configuration.tokenRefreshURL = URL(string: "\(ApiURL)/api/refresh_token")
+        return configuration
+    }()
+    
+    lazy var sessionManager: SPTSessionManager = {
+        let manager = SPTSessionManager(configuration: configuration, delegate: self)
+        return manager
+    }()
     
     lazy var appRemote: SPTAppRemote = {
       let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
@@ -20,19 +28,29 @@ class SpotifyManager: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDel
       return appRemote
     }()
     
-    func login(url: URL) {
-        let parameters = appRemote.authorizationParameters(from: url);
-
-        if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
-            appRemote.connectionParameters.accessToken = access_token
-            self.accessToken = access_token
-        } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
-            print(error_description.debugDescription)
-        }
+    func loginWithScopes() {
+        let scope: SPTScope = [.appRemoteControl, .userTopRead, .userReadRecentlyPlayed]
+        sessionManager.initiateSession(with: scope, options: .default)
     }
     
-    func connect() {
-        self.appRemote.authorizeAndPlayURI(self.playURI)
+    // MARK: - Session Manager Delegate Methods
+    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
+        print("FAIL")
+        print(error.localizedDescription)
+    }
+
+    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
+        print("RENEW")
+        print(session.accessToken)
+        print(session.refreshToken)
+    }
+
+    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
+        appRemote.connectionParameters.accessToken = session.accessToken
+        appRemote.connect()
+        print("INIT")
+        print(session.accessToken)
+        print(session.refreshToken)
     }
 
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
@@ -50,6 +68,5 @@ class SpotifyManager: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDel
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
       print("player state changed")
     }
-
     
 }
