@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct UserDefaultsManager {
+struct UserDefaultsManager {    
     static private let defaults = UserDefaults.standard
     static private let LOGIN_KEY = "logged_in"
     

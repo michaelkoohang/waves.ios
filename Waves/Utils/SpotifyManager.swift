@@ -1,13 +1,13 @@
 
 import Foundation
 
-class SpotifyManager: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
+class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
     let ApiURL = "https://016e7c736b18.ngrok.io"
     let SpotifyClientID = "a9a2854c43bc43ddb98f2bedf627bc50"
     let SpotifyRedirectURL = URL(string: "waves://spotify-login-callback")!
     var accessToken = ""
     var playURI = ""
-
+    
     lazy var configuration: SPTConfiguration = {
         let configuration = SPTConfiguration(clientID: SpotifyClientID, redirectURL: SpotifyRedirectURL)
         configuration.playURI = ""
@@ -17,40 +17,35 @@ class SpotifyManager: NSObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDel
     }()
     
     lazy var sessionManager: SPTSessionManager = {
-        let manager = SPTSessionManager(configuration: configuration, delegate: self)
+        let manager = SPTSessionManager(configuration: self.configuration, delegate: self)
         return manager
     }()
     
     lazy var appRemote: SPTAppRemote = {
-      let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
-      appRemote.connectionParameters.accessToken = self.accessToken
-      appRemote.delegate = self
-      return appRemote
+        let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
+        appRemote.connectionParameters.accessToken = self.accessToken
+        appRemote.delegate = self
+        return appRemote
     }()
     
     func loginWithScopes() {
         let scope: SPTScope = [.appRemoteControl, .userTopRead, .userReadRecentlyPlayed]
-        sessionManager.initiateSession(with: scope, options: .default)
+        sessionManager.initiateSession(with: scope, options: .clientOnly)
     }
     
     // MARK: - Session Manager Delegate Methods
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
         print("FAIL")
-        print(error.localizedDescription)
     }
 
     func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
         print("RENEW")
-        print(session.accessToken)
-        print(session.refreshToken)
     }
 
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         appRemote.connectionParameters.accessToken = session.accessToken
         appRemote.connect()
-        print("INIT")
-        print(session.accessToken)
-        print(session.refreshToken)
+        UserDefaultsManager.setLoggedIn(status: true)
     }
 
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
