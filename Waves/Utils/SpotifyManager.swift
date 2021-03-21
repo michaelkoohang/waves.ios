@@ -1,5 +1,6 @@
 
 import Foundation
+import SwiftUI
 
 class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
     let ApiURL = "https://016e7c736b18.ngrok.io"
