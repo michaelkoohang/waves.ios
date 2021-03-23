@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 
 class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
-    let ApiURL = "https://016e7c736b18.ngrok.io"
+    let ApiURL = "https://e29a20cfb6ee.ngrok.io"
     let SpotifyClientID = "a9a2854c43bc43ddb98f2bedf627bc50"
     let SpotifyRedirectURL = URL(string: "waves://spotify-login-callback")!
     var accessToken = ""
@@ -30,7 +30,7 @@ class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRe
     }()
     
     func loginWithScopes() {
-        let scope: SPTScope = [.appRemoteControl, .userTopRead, .userReadRecentlyPlayed]
+        let scope: SPTScope = [.appRemoteControl, .userReadPrivate, .userTopRead, .userReadRecentlyPlayed]
         sessionManager.initiateSession(with: scope, options: .clientOnly)
     }
     
@@ -46,6 +46,8 @@ class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRe
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         appRemote.connectionParameters.accessToken = session.accessToken
         appRemote.connect()
+        print(session.accessToken)
+        print(session.refreshToken)
         UserDefaultsManager.setLoggedIn(status: true)
     }
 

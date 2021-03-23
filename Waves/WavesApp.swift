@@ -9,7 +9,7 @@ struct WavesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if loggedIn {
+            if !loggedIn {
                 MainView(sptManager: sptManager)
                     .onOpenURL { url in
                         sptManager.sessionManager.application(UIApplication.shared, open: url, options: [:])
