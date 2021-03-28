@@ -4,16 +4,14 @@ import SwiftUI
 @main
 struct WavesApp: App {
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var sptManager = SpotifyManager()
-    @State var loggedIn = false
+    @ObservedObject var sptManager = SpotifyManager.shared
 
     var body: some Scene {
         WindowGroup {
-            if !loggedIn {
-                MainView(sptManager: sptManager)
+            if !sptManager.loggedIn {
+                MainView()
                     .onOpenURL { url in
-                        sptManager.sessionManager.application(UIApplication.shared, open: url, options: [:])
-                        
+                        SpotifyManager.shared.sessionManager.application(UIApplication.shared, open: url, options: [:])
                     }
             } else {
                 HomeView()

@@ -3,15 +3,19 @@ import Foundation
 import SwiftUI
 
 class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTSessionManagerDelegate {
-    let ApiURL = "https://e29a20cfb6ee.ngrok.io"
+    let ApiURL = Constants.API_URL
     let SpotifyClientID = "a9a2854c43bc43ddb98f2bedf627bc50"
     let SpotifyRedirectURL = URL(string: "waves://spotify-login-callback")!
     var accessToken = ""
     var playURI = ""
     
+    static let shared = SpotifyManager()
+    override private init() {}
+
+    @Published var loggedIn = UserDefaultsManager.getLoggedIn()
+    
     lazy var configuration: SPTConfiguration = {
         let configuration = SPTConfiguration(clientID: SpotifyClientID, redirectURL: SpotifyRedirectURL)
-        configuration.playURI = ""
         configuration.tokenSwapURL = URL(string: "\(ApiURL)/api/token")
         configuration.tokenRefreshURL = URL(string: "\(ApiURL)/api/refresh_token")
         return configuration
@@ -46,9 +50,20 @@ class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRe
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         appRemote.connectionParameters.accessToken = session.accessToken
         appRemote.connect()
-        print(session.accessToken)
-        print(session.refreshToken)
-        UserDefaultsManager.setLoggedIn(status: true)
+        let loginPost = LoginPost(authToken: session.accessToken, refreshToken: session.refreshToken, service: "spotify")
+        ApiManager.login(loginData: loginPost) { res in
+            switch res {
+            case .success(let data):
+                UserDefaultsManager.setUsername(username: data.username)
+                UserDefaultsManager.setJwtToken(token: data.token)
+                UserDefaultsManager.setLoggedIn(status: true)
+                DispatchQueue.main.async {
+                    self.loggedIn = true
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
     }
 
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
@@ -65,6 +80,10 @@ class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRe
     
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
       print("player state changed")
+    }
+    
+    func play(uri: String) {
+        appRemote.authorizeAndPlayURI(uri)
     }
     
 }
