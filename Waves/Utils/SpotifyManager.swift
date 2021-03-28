@@ -6,7 +6,11 @@ class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRe
     let ApiURL = Constants.API_URL
     let SpotifyClientID = "a9a2854c43bc43ddb98f2bedf627bc50"
     let SpotifyRedirectURL = URL(string: "waves://spotify-login-callback")!
-    var accessToken = ""
+    var accessToken = UserDefaultsManager.getAccessToken() {
+        didSet {
+            UserDefaultsManager.setAccessToken(accessToken: accessToken)
+        }
+    }
     var playURI = ""
     
     static let shared = SpotifyManager()
@@ -48,7 +52,7 @@ class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRe
     }
 
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        appRemote.connectionParameters.accessToken = session.accessToken
+        self.accessToken = session.accessToken
         appRemote.connect()
         let loginPost = LoginPost(authToken: session.accessToken, refreshToken: session.refreshToken, service: "spotify")
         ApiManager.login(loginData: loginPost) { res in
@@ -83,7 +87,17 @@ class SpotifyManager: NSObject, ObservableObject, SPTAppRemoteDelegate, SPTAppRe
     }
     
     func play(uri: String) {
-        appRemote.authorizeAndPlayURI(uri)
+        appRemote.playerAPI?.play(uri, callback: defaultCallback)
+    }
+    
+    var defaultCallback: SPTAppRemoteCallback {
+        get {
+            return {[weak self] _, error in
+                if let error = error {
+                    print(error)
+                }
+            }
+        }
     }
     
 }

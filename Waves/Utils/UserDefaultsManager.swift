@@ -6,6 +6,7 @@ struct UserDefaultsManager {
     static private let LOGIN_KEY = "logged_in"
     static private let USERNAME_KEY = "username"
     static private let JWT_KEY = "jwt_token"
+    static private let ACCESS_TOKEN = "access"
     
     static func setLoggedIn(status: Bool) {
         defaults.setValue(status, forKey: LOGIN_KEY)
@@ -29,6 +30,14 @@ struct UserDefaultsManager {
     
     static func getJwtToken() -> String {
         return defaults.string(forKey: JWT_KEY) ?? ""
+    }
+    
+    static func getAccessToken() -> String {
+        return defaults.string(forKey: ACCESS_TOKEN) ?? ""
+    }
+    
+    static func setAccessToken(accessToken: String) {
+        defaults.setValue(accessToken, forKey: ACCESS_TOKEN)
     }
     
     static func resetUserDefaults() {
