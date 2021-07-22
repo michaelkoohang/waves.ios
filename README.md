@@ -26,6 +26,6 @@ For the future, we plan to allow friends to see each others' recently played son
 
 * [Mega Doodle Pack](https://github.com/MariaLetta/mega-doodles-pack)
 
-[login-screenshot]: Images/waves-ss-1.png
-[friends-screenshot]: Images/waves-ss-2.png
-[radar-screenshot]: Images/waves-ss-3.png
+[login-screenshot]: Images/waves-ss-1.PNG
+[friends-screenshot]: Images/waves-ss-2.PNG
+[radar-screenshot]: Images/waves-ss-3.PNG
