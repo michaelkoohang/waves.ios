@@ -3,8 +3,6 @@ import SwiftUI
 import CoreData
 
 struct MainView: View {
-    var sptManger: SpotifyManager
-
     var body: some View {
         VStack {
             Spacer()
@@ -17,7 +15,7 @@ struct MainView: View {
             Text("Music Sharing Done Right")
             Spacer()
             WavesButton(text: "Login To Spotify", color: Color.green) {
-                sptManger.connect()
+                SpotifyManager.shared.loginWithScopes()
             }
             Spacer()
         }
@@ -27,6 +25,6 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(sptManger: SpotifyManager())
+        MainView()
     }
 }

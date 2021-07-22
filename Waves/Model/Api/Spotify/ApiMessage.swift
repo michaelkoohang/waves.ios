@@ -1,0 +1,4 @@
+
+enum ApiMessage {
+    case Success
+}
