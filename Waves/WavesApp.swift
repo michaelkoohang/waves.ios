@@ -17,5 +17,15 @@ struct WavesApp: App {
                 HomeView()
             }
         }
+        .onChange(of: scenePhase) { phase in
+            if UserDefaultsManager.getLoggedIn() {
+                if phase == .background {
+                    SpotifyManager.shared.appRemote.disconnect()
+                }
+                if phase == .active {
+                    SpotifyManager.shared.appRemote.connect()
+                }
+            }
+        }
     }
 }

@@ -77,4 +77,29 @@ struct ApiManager {
             return
         }.resume()
     }
+    
+    // Get radar for a particular user
+    static func refreshToken(refreshToken: String, completion: @escaping (Result<TokenRes, ApiError>) -> ()) {
+        guard let url = URL(string: "\(Constants.API_URL)/api/refresh_token") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = try! JSONEncoder().encode(TokenPost(refreshToken: refreshToken))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { data, _, _ in
+            if let data = data {
+                if let decodedResponse = try? JSONDecoder().decode(TokenRes.self, from: data) {
+                    completion(.success(decodedResponse))
+                    return
+                }
+                completion(.failure(.ServerError))
+                return
+            }
+            completion(.failure(.ConnectionError))
+            return
+        }.resume()
+    }
 }

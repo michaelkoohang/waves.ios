@@ -12,7 +12,8 @@ struct RadarView: View {
     @State var user: Friend
     @State var songs: [Song] = []
     @State var currentSong: String = ""
-    
+    @State var playing: Bool = false
+
     var imageWidth = CGFloat(150.0)
     var imageHeight = CGFloat(150.0)
     
@@ -29,9 +30,15 @@ struct RadarView: View {
             .frame(width: imageWidth, height: imageHeight)
             .padding(EdgeInsets(top: 36, leading: 0, bottom: 0, trailing: 0))
             VStack(alignment: .leading) {
+                Text("Top Songs")
+                    .font(Font.system(size: 24, weight: .bold, design: .default))
+                    .padding()
+                Divider()
                 ForEach(songs, id: \.self) { song in
-                    SongButton(name: song.name, artists: song.artists, playing: currentSong == song.uri) {
+                    SongButton(name: song.name, artists: song.artists, currentSong: $currentSong, playing: $playing) {
                         SpotifyManager.shared.play(uri: song.uri)
+                        currentSong = song.name
+                        playing = true
                     }
                 }
             }
@@ -55,7 +62,9 @@ struct RadarView: View {
             ApiManager.getRadar(username: user.username) { res in
                 switch res {
                 case .success(let data):
-                    songs = data
+                    withAnimation {
+                        songs = data
+                    }
                 case .failure(let err):
                     print(err.localizedDescription)
                 }
